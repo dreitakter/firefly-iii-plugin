@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 
 # FastAPI app
 app = FastAPI()
+app2 = FastAPI()
 
 @app.post("/")
 async def webhook_handler(request: Request):
