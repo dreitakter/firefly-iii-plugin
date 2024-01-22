@@ -1,4 +1,4 @@
-from typing import List
+from typing import Any, List, Optional
 
 from enum import Enum
 
@@ -12,74 +12,74 @@ class TransactionTypeEnum(str, Enum):
     opening_balance = 'opening balance' 
 
 class TransactionSplit(BaseModel):
-    user : str
-    transaction_journal_id : str
+    user : int
+    transaction_journal_id : int
     type : TransactionTypeEnum
-    #... hier noch fehlende Felder aufnehmen
     date: str
     order: int
-    currency_id: str
+    currency_id: int
     currency_code: str
     currency_symbol: str
-    currency_name: str
+#    currency_name: Optional[str]
     currency_decimal_places: int
-    foreign_currency_id: str
-    foreign_currency_code: str
-    foreign_currency_symbol: str
-    foreign_currency_decimal_places: int
+    foreign_currency_id: Optional[int]
+    foreign_currency_code: Optional[str]
+    foreign_currency_symbol: Optional[str]
+    foreign_currency_decimal_places: Optional[int]
     amount: str
-    foreign_amount: str
+    foreign_amount: Optional[str]
     description: str
-    source_id: str
+    source_id: int
     source_name: str
-    source_iban: str
+    source_iban: Optional[str]
     source_type: str
-    destination_id: str
+    destination_id: int
     destination_name: str
-    destination_iban: str
+    destination_iban: Optional[str]
     destination_type: str
-    budget_id: str
-    budget_name: str
-    category_id: str
-    category_name: str
-    bill_id: str
-    bill_name: str
-    reconciled: bool
-    notes: str
-    tags: List[str]
-    internal_reference: str
-    external_id: str
-    external_url: str
-    original_source: str
-    recurrence_id: str
-    recurrence_total: int
-    recurrence_count: int
-    bunq_payment_id: str
-    import_hash_v2: str
-    sepa_cc: str
-    sepa_ct_op: str
-    sepa_ct_id: str
-    sepa_db: str
-    sepa_country: str
-    sepa_ep: str
-    sepa_ci: str
-    sepa_batch_id: str
-    interest_date: str
-    book_date: str
-    process_date: str
-    due_date: str
-    payment_date: str
-    invoice_date: str
-    latitude: float
-    longitude: float
-    zoom_level: int
-    has_attachments: bool
+    budget_id: Optional[int]
+    budget_name: Optional[str]
+    category_id: Optional[str]
+    category_name: Optional[str]
+    bill_id: Optional[str]
+    bill_name: Optional[str]
+    reconciled: Optional[bool]
+    notes: Optional[str]
+    tags: Optional[List[str]]
+    internal_reference: Optional[str]
+    external_id: Optional[str]
+ #   external_url: Optional[str]
+    original_source: Optional[str]
+    recurrence_id: Optional[str]
+ #   recurrence_total: Optional[int]
+ #   recurrence_count: Optional[int]
+    bunq_payment_id: Optional[str]
+    import_hash_v2: Optional[str]
+    sepa_cc: Optional[str]
+    sepa_ct_op: Optional[str]
+    sepa_ct_id: Optional[str]
+    sepa_db: Optional[str]
+    sepa_country: Optional[str]
+    sepa_ep: Optional[str]
+    sepa_ci: Optional[str]
+    sepa_batch_id: Optional[str]
+    interest_date: Optional[str]
+    book_date: Optional[str]
+    process_date: Optional[str]
+    due_date: Optional[str]
+    payment_date: Optional[str]
+    invoice_date: Optional[str]
+    latitude: Optional[float]
+    longitude: Optional[float]
+    zoom_level: Optional[int]
+ #   has_attachments: Optional[bool]
 
 class Transaction(BaseModel):
+    id: int
     created_at : str
     updated_at : str
-    user : str
-    group_title : str
+    user : int
+    group_title : Optional[str]
     transactions : List[TransactionSplit]
 
 class ObjectLink0(BaseModel):
@@ -87,7 +87,7 @@ class ObjectLink0(BaseModel):
     uri : str
 
 class ObjectLink(BaseModel):
-    0 : ObjectLink0
+    #0 : ObjectLink0
     self : str
 
 
@@ -99,3 +99,12 @@ class TransactionRead(BaseModel):
 
 class TransactionSingle(BaseModel):
     data : TransactionRead
+
+class TransactionWebhook(BaseModel):
+    uuid: str
+    user_id: int
+    trigger: str
+    response: str
+    url: str
+    version: str
+    content: Transaction

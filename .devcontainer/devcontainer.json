@@ -9,14 +9,28 @@
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8000],
+	//"forwardPorts": [],
+
+	// appPort of webserver
+	"appPort": 8000,
+
+	// use host-network 
+	"runArgs": [
+        // Use the network stack of the host machine
+        "--net=host"
+    ],
+
+	//"runArgs": ["--publish", "8000:8000"],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install --user -r requirements.txt"
+	"postCreateCommand": "pip3 install --user -r requirements.txt",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
+
+	// Start webserver on Port 8000 (webhook-listener)
+	"postStartCommand": "uvicorn plugin:app --host 0.0.0.0 --port 8000 --reload"
 }
