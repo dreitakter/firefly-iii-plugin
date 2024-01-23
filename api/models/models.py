@@ -4,12 +4,14 @@ from enum import Enum
 
 from pydantic import BaseModel
 
-class TransactionTypeEnum(str, Enum):
-    withdrawal = 'withdrawal'
-    deposit = 'deposit' 
-    transfer = 'transfer' 
-    reconciliation = 'reconciliation' 
-    opening_balance = 'opening balance' 
+from transaction_type_enum import TransactionTypeEnum
+
+#class TransactionTypeEnum(str, Enum):
+#    withdrawal = 'withdrawal'
+#    deposit = 'deposit' 
+#    transfer = 'transfer' 
+#    reconciliation = 'reconciliation' 
+#    opening_balance = 'opening balance' 
 
 class TransactionSplit(BaseModel):
     user : int
