@@ -4,7 +4,7 @@ from enum import Enum
 
 from pydantic import BaseModel
 
-from transaction_type_enum import TransactionTypeEnum
+from .transaction_type_enum import TransactionTypeEnum
 
 #class TransactionTypeEnum(str, Enum):
 #    withdrawal = 'withdrawal'
@@ -73,7 +73,7 @@ class TransactionSplit(BaseModel):
     invoice_date: Optional[str]
     latitude: Optional[float]
     longitude: Optional[float]
-    zoom_level: Optional[int]
+    zoom_level: Optional[int] = None   #mit einem defaultwert None muss das Feld nicht übergeben werden
  #   has_attachments: Optional[bool]
 
 class Transaction(BaseModel):

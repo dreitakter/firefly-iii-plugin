@@ -1,5 +1,6 @@
 from models import TransactionTypeEnum, TransactionSplit
 
-transaction = TransactionTypeEnum()
+split = TransactionSplit()
 
-trans = TransactionSplit()
+transaction = TransactionTypeEnum("withdrawal")
+
