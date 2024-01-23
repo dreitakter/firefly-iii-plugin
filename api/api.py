@@ -1,3 +1,3 @@
-from models import models
+import models
 
-transaction = TransactionSplit()
+transaction = TransactionTypeEnum()
