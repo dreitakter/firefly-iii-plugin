@@ -14,11 +14,11 @@
 	// appPort of webserver
 	"appPort": 8000,
 
-	// use host-network 
-	"runArgs": [
-        // Use the network stack of the host machine
-        "--net=host"
-    ],
+	//// use host-network 
+	//"runArgs": [
+    //    // Use the network stack of the host machine
+    //    "--net=host"
+    //],
 
 	//"runArgs": ["--publish", "8000:8000"],
 
