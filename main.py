@@ -1,7 +1,10 @@
-import api
+from api import *
+from api.models.models import *
+
+
 
 from fastapi import FastAPI, Request
-from models import TransactionWebhook
+# from models import TransactionWebhook
 
 # FastAPI app
 app = FastAPI()
